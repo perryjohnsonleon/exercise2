@@ -13,7 +13,7 @@
    let oldCanvas = document.getElementById("myChart");
    if (oldCanvas) {
 	  stockId += 1 ;
-	  oldCanvas.outerHTML = "<canvas id='myChart' style='display:none;'></canvas>" ;
+	  oldCanvas.outerHTML = "<canvas id='myChart' width='500' height='300'></canvas>" ;
   }
     let fetchUrl_str1="https://ws.api.cnyes.com/ws/api/v1/charting/history?resolution=1&symbol=TWS:" , fetchUrl_str2=":STOCK&quote=1"   ;
     let fetchUrl_str=fetchUrl_str1 + stockId_list[stockId] + fetchUrl_str2 ;
@@ -74,27 +74,15 @@ async function displayPost() {
       }
     });
    }
-    document.getElementById("myChart").width = "500" ;
-	document.getElementById("myChart").height = "300" ;
-    document.getElementById("myChart").style.display = "block" ;
-	document.getElementById("collapseBtn").innerHTML = "<img src='collapse.png' style='cursor:pointer;' onclick='collapseElement()' />";
-	document.getElementById("collapseBtn").style.display = "block" ;
-    document.getElementById("hiddenMsg").style.display = "block" ;	
-  }
-
-	function collapseElement() {
-	document.getElementById("hiddenMsg").style.display = "none" ;
-      }   
+  }   
   </script>
 
 
+ 
 </head>
 <body>
 <div style="display:flex;">
-<div id="hiddenMsg">
-<div><canvas id="myChart"  width="500" height="300"  style="display:none;"></canvas></div>
-<div id="collapseBtn" style="display:none;justify-content:center;"></div>
-</div>
+<div><canvas id="myChart" width="500" height="300"></canvas></div>
 <div><button onclick="displayPost();" style="padding:10px,30px ;">TEST</button></div>
 </div>
 <script>
