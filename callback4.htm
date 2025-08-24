@@ -5,20 +5,15 @@
   <!-- script type="text/javascript" src="js/jquery-3.2.1.min.js"></script -->
   <script src="js/chart.js"></script>
   <script>
-  let stockId_list=['2330','1504','2371','2324','2317','2002','2027','1402','1301','1102','1101','1210','2347','8150','5410','4938'] ; // 台積電(2330), 東元(1504) 鴻海(2317) , 亞泥(1102) , 聯發科(2454), 大成鋼(2027) , 京元電(2449)  聯強(2347) , 台泥(1101) , 大同(2371) , 中鋼(2002)
-  let stockId=0 ;
+
  async function getPost() {
   try {
    let itemPrice_matrix="" ;
    let oldCanvas = document.getElementById("myChart");
    if (oldCanvas) {
-	  stockId += 1 ;
-	  oldCanvas.outerHTML = "<canvas id='myChart' style='display:none;'></canvas>" ;
+	  oldCanvas.outerHTML = "<canvas id='myChart' width='400' height='200'></canvas>" ;
   }
-    let fetchUrl_str1="https://ws.api.cnyes.com/ws/api/v1/charting/history?resolution=1&symbol=TWS:" , fetchUrl_str2=":STOCK&quote=1"   ;
-    let fetchUrl_str=fetchUrl_str1 + stockId_list[stockId] + fetchUrl_str2 ;
-	console.log(fetchUrl_str);
-    const response = await fetch(fetchUrl_str);
+    const response = await fetch('https://ws.api.cnyes.com/ws/api/v1/charting/history?resolution=1&symbol=TWS:1102:STOCK&quote=1');
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -32,7 +27,6 @@
 }
 
 async function displayPost() {
-  if (stockId > 15) stockId = 1 ;
   const post = await getPost();
   let itemPrice_name = "" ;
   let xValues_str="0";
@@ -74,29 +68,15 @@ async function displayPost() {
       }
     });
    }
-    document.getElementById("myChart").width = "500" ;
-	document.getElementById("myChart").height = "300" ;
-    document.getElementById("myChart").style.display = "block" ;
-	document.getElementById("collapseBtn").innerHTML = "<img src='collapse.png' style='cursor:pointer;' onclick='collapseElement()' />";
-	document.getElementById("collapseBtn").style.display = "block" ;
-    document.getElementById("hiddenMsg").style.display = "block" ;	
-  }
-
-	function collapseElement() {
-	document.getElementById("hiddenMsg").style.display = "none" ;
-      }   
+  }   
   </script>
 
 
+ 
 </head>
 <body>
-<div style="display:flex;">
-<div id="hiddenMsg">
-<div><canvas id="myChart"  width="500" height="300"  style="display:none;"></canvas></div>
-<div id="collapseBtn" style="display:none;justify-content:center;"></div>
-</div>
-<div><button onclick="displayPost();" style="padding:10px,30px ;">TEST</button></div>
-</div>
+<canvas id="myChart" width="400" height="200"></canvas>
+<button onclick="displayPost();" style="padding:10px,30px ;">TEST</button>
 <script>
 displayPost();
 </script>
