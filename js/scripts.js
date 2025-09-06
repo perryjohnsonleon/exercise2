@@ -39,6 +39,7 @@ const element1 = document.getElementById("myBar1");
 							break;
 					  case "W": 
 							window.location.href = 'https://perryjohnsonleon.github.io/exercise2/index_w.htm' ;
+							break;
 					  case "Z": 
 							window.location.href = 'https://perryjohnsonleon.github.io/exercise2/index_z.htm' ;
 							break;
