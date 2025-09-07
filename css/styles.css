@@ -2546,6 +2546,18 @@ textarea.form-control-lg {
   margin-right: 1rem;
 }
 
+.btn-expand {
+  background-color:#b0b0b0; 
+  color: #000;
+  border: none;
+}	
+
+.btn2-expand {
+  background-color:#f3b3b3; 
+  color: #000;
+  border: none;
+}	
+
 .btn-check {
   position: absolute;
   clip: rect(0, 0, 0, 0);
@@ -7279,8 +7291,8 @@ textarea.form-control-lg {
 }
 
 .my-5 {
-  margin-top: 2rem !important;
-  margin-bottom: 3rem !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
 }
 
 .my-auto {
@@ -11397,13 +11409,18 @@ html {
 	 font-size: 1.25rem;	 
  }
 
- 
-#hiddenElement,#hiddenElement1,#hiddenElement2,#hiddenElement3,#hiddenMsg1 {
-     display: none; /* Initially hide the element */
-}
+ #hiddenMsg1 {
+  display: none; 
+ }
+
+ /*
+ #hiddenElement,#hiddenElement1,#hiddenElement2,#hiddenElement3,#hiddenMsg1 {
+  display: none; 
+ }
+*/
         
 #hiddenMsg1 {
-     display: none; /* Initially hide the element */
+   display: none; /* Initially hide the element */
 	 font-size:0.5rem;
 }
         
