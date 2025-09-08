@@ -40,6 +40,9 @@ const element1 = document.getElementById("myBar1");
 					  case "W": 
 							window.location.href = 'https://perryjohnsonleon.github.io/exercise2/index_w.htm' ;
 							break;
+					  case "X": 
+							window.location.href = 'https://perryjohnsonleon.github.io/exercise2/index_x.htm' ;
+							break;
 					  case "Z": 
 							window.location.href = 'https://perryjohnsonleon.github.io/exercise2/index_z.htm' ;
 							break;
@@ -782,7 +785,7 @@ const element1 = document.getElementById("myBar1");
         return new Promise((resolve) => {
         setTimeout(() => {
         if (firstVisit === undefined || firstVisit === null) {
-			      $("#hiddenElement1").html("&nbsp;"); 
+		    $("#hiddenElement1").html("&nbsp;"); 
             $("#hiddenElement2").html("&nbsp;"); 
             $("#collapseBtn").html("&nbsp;");   
         }
@@ -862,7 +865,7 @@ const element1 = document.getElementById("myBar1");
 
 	async function getPost(stockId) {
 	  try {
-	   let itemPrice_matrix="" ;
+	   let itemPrice_matrix="";
 	   let oldCanvas = document.getElementById("hiddenMsg2");
 	   let oldCollapseBtn = document.getElementById("collapseBtn2");
 	   if (oldCanvas && stockId == 0) {
