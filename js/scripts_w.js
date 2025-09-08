@@ -24,8 +24,7 @@
  async function displayPost(stockId) {
 	  const post = await getPost(stockId);
 	  const num = stockId+1 ;
-	  let elemId_1="item-1" + num , elemId_2="item-2" + num , elemId_3="item-3" + num , elemId_4="item-4" + num , elemId_5="item-5" + num ;
-	  console.log(elemId_2)	;  
+	  let elemId_1="item-1" + num , elemId_2="item-2" + num , elemId_3="item-3" + num , elemId_4="item-4" + num , elemId_5="item-5" + num ; 
 	  if (post) {
 		const quote_obj = post.data.quote ;
 		for ( var n in quote_obj) {
