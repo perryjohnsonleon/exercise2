@@ -92,12 +92,12 @@
 	   let itemPrice_matrix="" ;
 	   let oldCanvas = document.getElementById("hiddenMsg2");
 	  // let oldCollapseBtn = document.getElementById("collapseBtn2");
-	   if (oldCanvas && stockId == 0) {
+	   if (oldCanvas && stockId == -1) {
 	      oldCanvas.outerHTML = "<div id='hiddenMsg2' style='display:none;'><canvas id='myChart' width='750' height='400'  display='none'></canvas><div id='collapseBtn2' style='display:none;justify-content:center;'><img src='collapse.png' style='cursor:pointer;' onclick='getPost(0)' /></div></div>" ;
 	      return 0;
 		}
 		else {
-		  oldCanvas.outerHTML = "<div id='hiddenMsg2'><canvas id='myChart' width='750' height='400'></canvas><div id='collapseBtn2' style='justify-content:center;'><img src='collapse.png' style='cursor:pointer;' onclick='getpricePost(0)' /></div></div>" ;
+		  oldCanvas.outerHTML = "<div id='hiddenMsg2'><canvas id='myChart' width='750' height='400'></canvas><div id='collapseBtn2' style='justify-content:center;'><img src='collapse.png' style='cursor:pointer;' onclick='getpricePost(-1)' /></div></div>" ;
 		}
 		let fetchUrl_str1="https://ws.api.cnyes.com/ws/api/v1/charting/history?resolution=1&symbol=TWS:" , fetchUrl_str2=":STOCK&quote=1"   ;
 		let fetchUrl_str=fetchUrl_str1 + stockId_list[stockId] + fetchUrl_str2 ;
@@ -183,20 +183,52 @@
 		let yValues = original.map(n => n );
 		let points = yValues.map((y, i) => ({ x: xValues[i], y }));
 		let itemPrice_title = itemPrice_name + "(" + itemPrice_weight + ")" + "[" + itemPrice_height + "]" ; 
+		let itemPrice_mid= itemPrice_weight - itemPrice_height ;
 		var graph=new Chart(document.getElementById('myChart'), {
 		  type: 'line',
 		  data: {
 			datasets: [{
 			  label: itemPrice_title ,
 			  data: points,
-			  borderColor: '#1171FF',
+			  borderColor:'#1171FF',
+			  borderWidth:1,
+			  pointRadius:1,
 			  cubicInterpolationMode: 'monotone',
 			  tension: 0.4,
 			  backgroundColor: 'rgba(17,113,255,0.6)',
 			}]
 		  },
 		  options: { 
-			scales: {
+		  // *****
+			responsive: true,
+			plugins: {
+			  legend: {
+				display: true,
+				labels: { font: { size: 14 } }
+			  },
+			  annotation: {
+				annotations: {
+				  midline: {
+					type: 'line',
+					yMin: itemPrice_mid,   // 中線 y 值
+					yMax: itemPrice_mid,
+					borderColor: 'red',
+					borderWidth: 1,
+					borderDash: [4, 4],
+					label: {
+					  display: true,
+					  content: '',
+					  color: 'red',
+					  position: 'end',
+					  backgroundColor: 'white'
+					}
+				  }
+				}
+			  }
+			}		  
+		  
+		  // *****
+		,scales: {
 			  x: {
 				type: 'linear', // 指定為數值型 x 軸
 				title: { display: true, text: '時間' },
